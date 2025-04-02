@@ -1,0 +1,46 @@
+ai:
+  model: deepseek
+  api_key: "your_api_key_here"
+  
+output:
+  format:
+    - markdown
+    - mindmap
+    - summary
+  style:
+    markdown:
+      headers: ["#", "##", "###"]
+      emphasis: ["**", "*", "`"]
+    mindmap:
+      format: "markdown"
+      levels: 3
+      
+templates:
+  summary: "templates/summary_template.md"
+  mindmap: "templates/mindmap_template.md"
+  markdown: "templates/markdown_template.md"
+
+processing:
+  subtitle:
+    engine: "whisper"
+    language: "zh"
+    quality: "high"
+  
+  summary:
+    max_length: 3000
+    min_length: 500
+    format: "detailed"
+    
+  mindmap:
+    max_depth: 3
+    include_examples: true
+    highlight_important: true
+
+paths:
+  input: "./input"
+  output: "./output"
+  temp: "./temp"
+  
+logging:
+  level: "INFO"
+  file: "logs/process.log"
